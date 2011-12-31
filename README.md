@@ -1,3 +1,7 @@
+= Flickr Map =
+
+A simple Google Maps Flickr Profile viewer. 
+There's no caching enabled, so startups might take a *bit* long
 == Install == 
 Create a new config file: config.py
 
