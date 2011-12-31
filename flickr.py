@@ -10,7 +10,10 @@ class Flickr():
   
   def getInfo(self, photo):
     exif = photo.getExif()
-    gps = photo.getLocation()
+    try:
+      gps = photo.getLocation()
+    except FlickrAPIError:
+      return None
 
     r = {}
     r["id"] = photo.id
@@ -51,7 +54,7 @@ class Flickr():
       """
     # Add exif
     self.flickrobj = photos
-    self.photos = map(lambda l: self.getInfo(l), photos)
+    self.photos = filter(lambda l: l != None, map(lambda l: self.getInfo(l), photos))
 
 if __name__ == "__main__": 
   f = Flickr(FLICKR_URL)
