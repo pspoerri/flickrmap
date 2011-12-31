@@ -34,5 +34,4 @@ def main():
     return template.render(title=config.TITLE, google_api_key=config.GOOGLE_MAPS_KEY)
 
 if __name__ == "__main__":
-    app.debug = True
-    app.run()
+    app.run(port=6000,host="0.0.0.0")
