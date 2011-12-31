@@ -24,11 +24,11 @@ And set the following settings:
 ```python
 TITLE = "Title"
 GOOGLE_MAPS_KEY = "Google API Key"
-GOOGLE_ANALYTICS = "analytics key" ## Not needed
+GOOGLE_ANALYTICS = "analytics key" ## Not needed (if you don't want to run Analytics, put some random value here...)
 
 FLICKR_USER = "13538696@N02
 FLICKR_API_KEY   = "flickr api key"
-FLICKR_API_SECRET = "flickr api secret"
+FLICKR_API_SECRET = "flickr api secret" ## Not needed right now
 ```
 
 Running
