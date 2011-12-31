@@ -28,7 +28,9 @@ def return_page(page):
 @app.route("/")
 def main():
     template = env.get_template('map.htm')
-    return template.render(title=config.TITLE, google_api_key=config.GOOGLE_MAPS_KEY)
+    return template.render(title=config.TITLE, 
+        google_api_key=config.GOOGLE_MAPS_KEY,
+        google_analytics=config.GOOGLE_ANALYTICS)
 
 if __name__ == "__main__":
 #    app.debug = True
