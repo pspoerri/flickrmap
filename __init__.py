@@ -3,6 +3,7 @@
 from flask import Flask
 from jinja2 import Environment, PackageLoader, FileSystemLoader
 env = Environment(loader=FileSystemLoader('templates'))
+import math
 
 import flickr
 import config
@@ -13,10 +14,15 @@ app.static_path="static"
 app.static_url_path="static/"
 
 f = flickr.Flickr(config.FLICKR_USER)
+per_page = 20
 
 @app.route("/json")
-def return_photos():
-    return json.dumps({"markers": f.toJson()})
+def return_info():
+    return json.dumps({"pages": int(math.ceil(len(f.photos)/float(per_page)))})
+@app.route("/json/<page>"):
+def return_page(page):
+    p = int(page)
+    return json.dumps({"markers": f.photos[(p-1)*per_page:p*per_page]})
 
 @app.route("/")
 def main():
