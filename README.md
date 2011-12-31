@@ -10,16 +10,14 @@ Install
 
 ```
 git clone git@github.com:moeeeep/flickrmap.git
-sudo apt-get install python-flickrapi
+sudo apt-get install python-flickrapi python-flask python-jinja2
 ```
 
 You're done. 
 
 Configuration
 -------------
-Create a new config file: config.py
-
-And set the following settings:
+Create a new config file "config.py" with the following settings:
 
 ```python
 TITLE = "Title"
