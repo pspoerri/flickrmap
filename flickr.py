@@ -27,8 +27,8 @@ class Flickr():
     
         page += 1
     self.f_photos = photos 
-    self.photos = map(lambda l: self.getInfo(l), self.f_photos)
-
+    self.photos = filter(lambda l: l["longitude"] != 0.0 and l["latitude"] != 0.0, map(lambda l: self.getInfo(l), self.f_photos))
+    
   def getFlickrPage(self, photo):
     return "http://www.flickr.com/photos/{user}/{photo_id}".format(
         user=photo["pathalias"], photo_id=photo["id"])
