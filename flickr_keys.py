@@ -1,5 +1,0 @@
-from config import FLICKR_API_KEY, FLICKR_API_SECRET
-
-## Hack for the flickr API...
-API_KEY   = FLICKR_API_KEY
-API_SECRET = FLICKR_API_SECRET
