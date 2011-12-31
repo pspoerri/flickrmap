@@ -1,7 +1,7 @@
 Flickr Map
 ==========
 
-A simple Google Maps Flickr Profile viewer. 
+A simple Google Maps Flickr Profile viewer. It downloads the information via the flickr API from the user defined in the config.
 
 You can see it "live" on http://map.pascalspoerri.ch
 
