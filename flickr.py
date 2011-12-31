@@ -12,7 +12,7 @@ class Flickr():
     exif = photo.getExif()
     try:
       gps = photo.getLocation()
-    except FlickrAPIError:
+    except flickr_api.base.FlickrAPIError:
       return None
 
     r = {}
