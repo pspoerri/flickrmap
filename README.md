@@ -1,8 +1,10 @@
-= Flickr Map =
+Flickr Map
+==========
 
 A simple Google Maps Flickr Profile viewer. 
 There's no caching enabled, so startups might take a *bit* long
-== Install == 
+Install
+-------
 Create a new config file: config.py
 
 And set the following settings:
@@ -14,4 +16,6 @@ And set the following settings:
  FLICKR_API_KEY   = "flickr api key"
  FLICKR_API_SECRET = "flickr api secret"
 
+Running
+-------
 Run python __init__.py to run it
