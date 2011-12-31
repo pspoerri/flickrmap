@@ -39,7 +39,7 @@ class Flickr():
     r["id"] = photo["id"]
     r["title"] = photo["title"]
     r["thumbnail"] = photo["url_sq"]
-    r["photo_url"] = self.getFlickrPage(photo)+"/lightbox/"
+    r["photo_url"] = self.getFlickrPage(photo)
     r["longitude"] = photo["longitude"]
     r["latitude"] = photo["latitude"]
     r["location_accuracy"] = photo["accuracy"]
@@ -53,7 +53,7 @@ class Flickr():
         r["title"] = photo["title"]
         r["latitude"] = photo["latitude"]
         r["longitude"] = photo["longitude"]
-        r["content"] = u"""<a href="{link}/lightbox/" target="_blank"><img src="{thumbnail}" alt="{title}"></a> <b>{title}</b>""".format(
+        r["content"] = u'<a href="{link}/lightbox/" target="_blank"><img src="{thumbnail}" alt="{title}"></a> <b>{title}</b>'.format(
             link=photo["photo_url"], thumbnail=photo["thumbnail"], title=photo["title"])
         json_photos.append(r)
       self.json_dump = json.dumps(json_photos)
