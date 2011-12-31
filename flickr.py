@@ -10,7 +10,6 @@ class Flickr():
     self.flickr.cache = flickrapi.SimpleCache(timeout=300, max_entries=200)
     self.user_id = user_id
     self.loadPhotos()
-    self.json_dump = None
   def loadPhotos(self):
     print "Loading photos for user {user}".format(user=self.user_id)
     
@@ -43,21 +42,10 @@ class Flickr():
     r["longitude"] = photo["longitude"]
     r["latitude"] = photo["latitude"]
     r["location_accuracy"] = photo["accuracy"]
+    r["content"] = u'<a href="{link}/lightbox/" target="_blank"><img src="{thumbnail}" alt="{title}"></a> <b>{title}</b>'.format(
+            link=r["photo_url"], thumbnail=r["thumbnail"], title=r["title"])
     return r
 
-  def toJson(self):
-    if self.json_dump == None:
-      json_photos = []
-      for photo in self.photos:
-        r = {}
-        r["title"] = photo["title"]
-        r["latitude"] = photo["latitude"]
-        r["longitude"] = photo["longitude"]
-        r["content"] = u'<a href="{link}/lightbox/" target="_blank"><img src="{thumbnail}" alt="{title}"></a> <b>{title}</b>'.format(
-            link=photo["photo_url"], thumbnail=photo["thumbnail"], title=photo["title"])
-        json_photos.append(r)
-      self.json_dump = json.dumps(json_photos)
-    return self.json_dump
 
 if __name__ == "__main__": 
   f = Flickr(FLICKR_USER)

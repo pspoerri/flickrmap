@@ -17,11 +17,36 @@
 <body >
 <div id="map_canvas" style="width:100%; height:100%"></div>
 <script type="text/javascript">
-
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
 $(function() {
     // This URL won't work on your localhost, so you need to change it
     // see http://en.wikipedia.org/wiki/Same_origin_policy
-    $.getJSON( '/json', function(data) { 
+    $.getJSON( '/json', function(data) {
+      pages = data.pages
+      console.log("Trying to load "+pages+" pages ");
+      for (p=1;p<=pages;p++) {
+        console.log("Trying to load page "+p);
+        $.getJSON( '/json/'+p , function(data) {
+          $.each( data.markers, function(i, marker) {
+            $('#map_canvas').gmap('addMarker', { 
+              'position': new google.maps.LatLng(marker.latitude, marker.longitude), 
+              'bounds': true 
+            }).click(function() {
+              $('#map_canvas').gmap('openInfoWindow', { 'content': marker.content }, this);
+            });
+          });
+        });
+        console.log("Loaded page "+p);
+        sleep(100);
+      }
+      /*
       $.each( data.markers, function(i, marker) {
         $('#map_canvas').gmap('addMarker', { 
           'position': new google.maps.LatLng(marker.latitude, marker.longitude), 
@@ -30,6 +55,7 @@ $(function() {
           $('#map_canvas').gmap('openInfoWindow', { 'content': marker.content }, this);
         });
       });
+      */
     });
   });
 
