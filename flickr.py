@@ -40,9 +40,9 @@ class Flickr():
     page = 1
     photos = []
     while True:
-      res = self.user.getPublicPhotos(page=page,per_page=100)
+      res = self.user.getPublicPhotos(page=page,per_page=200)
       photos += res.data
-      break
+#break
       if page >= res.info.get("pages"):
         break
       page += 1

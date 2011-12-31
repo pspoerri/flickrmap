@@ -20,7 +20,7 @@ for photo in f.photos:
   r["title"] = photo["title"]
   r["latitude"] = photo["latitude"]
   r["longitude"] = photo["longitude"]
-  r["content"] = u'<a href="{link}" target="_blank"><img src="{thumbnail}" alt="{title}"/></a>'.format(
+  r["content"] = u"""<a href="{link}/lightbox/" target="_blank"><img src="{thumbnail}" alt="{title}"></a> <b>{title}</b>""".format(
       link=photo["photo_url"], thumbnail=photo["thumbnail"], title=photo["title"])
   json_photos.append(r)
 
