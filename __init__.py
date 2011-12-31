@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from flask import Flask
 from jinja2 import Environment, PackageLoader, FileSystemLoader
 env = Environment(loader=FileSystemLoader('templates'))
@@ -18,7 +20,7 @@ for photo in f.photos:
   r["title"] = photo["title"]
   r["latitude"] = photo["latitude"]
   r["longitude"] = photo["longitude"]
-  r["content"] = '<a href="{link}" target="_blank"><img src="{thumbnail}" alt="{title}"/></a>'.format(
+  r["content"] = u'<a href="{link}" target="_blank"><img src="{thumbnail}" alt="{title}"/></a>'.format(
       link=photo["photo_url"], thumbnail=photo["thumbnail"], title=photo["title"])
   json_photos.append(r)
 

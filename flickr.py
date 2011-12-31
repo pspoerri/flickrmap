@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 from config import FLICKR_URL
 import flickr_api
 
