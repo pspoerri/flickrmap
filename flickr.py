@@ -15,13 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from config import FLICKR_USER, FLICKR_API_KEY
+from config import FLICKR_USER, FLICKR_API_KEY, FLICKR_API_SECRET
 import flickrapi
 import json
 
 class Flickr():
   def __init__(self, user_id):
-    self.flickr = flickrapi.FlickrAPI(FLICKR_API_KEY, format='json')
+    self.flickr = flickrapi.FlickrAPI(FLICKR_API_KEY, FLICKR_API_SECRET, format='json', store_token=False)
     self.flickr.cache = flickrapi.SimpleCache(timeout=300, max_entries=200)
     self.user_id = user_id
     self.loadPhotos()
@@ -33,8 +33,7 @@ class Flickr():
     while True:
         print "Page", page
         result = self.flickr.people_getPublicPhotos(user_id=self.user_id, page=page, extras="geo,icon_server,description,url_sq, url_t, url_s, url_m, url_z, url_l,path_alias")
-#        print result[14:-1]
-        j = json.loads(result[14:-1])
+        j = json.loads(result)
         photos += j["photos"]["photo"]
         current_page = j["photos"]["page"]
         if current_page >= j["photos"]["pages"]:
